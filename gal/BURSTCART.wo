@@ -1,0 +1,16 @@
+#WAVEFORM
+#H Name     BURSTCART_PLUS4;
+#H PartNo   00;
+#H Date     2025-04-19;
+#H Revision 01;
+#H Designer Maciej Witkowiak;
+#H Company  YTM Enterprises;
+#H Assembly None;
+#H Location ;
+#H 
+#H 
+#F addr = [A15,A14,A13,A12,A11,A10,A9,A8,A7,A6,A5,A4];
+
+#H ORDER: A4, A5, A6, A7; 
+#H 
+#V 0001 0000

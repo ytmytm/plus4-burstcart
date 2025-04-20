@@ -1,0 +1,82 @@
+LISTING FOR LOGIC DESCRIPTION FILE: BURSTCART.pld                    Page 1
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Sat Apr 19 09:41:56 2025
+
+  1:Name     BURSTCART_PLUS4 ;
+  2:PartNo   00 ;
+  3:Date     2025-04-19;
+  4:Revision 01 ;
+  5:Designer Maciej Witkowiak ;
+  6:Company  YTM Enterprises ;
+  7:Assembly None ;
+  8:Location  ;
+  9:Device   g22v10 ;
+ 10:
+ 11:/* input 1-11 */
+ 12:/* i/o/q 13-23 */
+ 13:/* GND 12, VCC 24 */
+ 14:
+ 15:/* https://class.ece.uw.edu/475/peckol/doc/cupl.html */
+ 16:/* https://nreeder.com/programminggal/ */
+ 17:
+ 18:/* *************** INPUT PINS *********************/
+ 19:PIN 1    = A4                        ; /* A4                                */
+ 20:PIN 2    = A5                        ; /* A5                                */
+ 21:PIN 3    = A6                        ; /* A6                                */
+ 22:PIN 4    = A7                        ; /* A7                                */
+ 23:PIN 5    = A8                        ; /* A8                                */
+ 24:PIN 6    = A9                        ; /* A9                                */
+ 25:PIN 7    = A10                       ; /* A10                               */
+ 26:PIN 8    = A11                       ; /* A11                               */
+ 27:PIN 9    = A12                       ; /* A12                               */
+ 28:PIN 10   = A13                       ; /* A13                               */
+ 29:PIN 11   = A14                       ; /* A14                               */
+ 30:PIN 13   = A15                       ; /* A15                               */
+ 31:PIN 14   = nRESET                    ; /* /RESET (in, active low)           */
+ 32:PIN 15   = C1LO                      ; /* C1LO                              */
+ 33:PIN 16   = C1HI                      ; /* C1HI                              */
+ 34:PIN 17   = C2LO                      ; /* C2LO                              */
+ 35:PIN 18   = C2HI                      ; /* C2HI                              */
+ 36:PIN 23   = PHI2                      ; /* phi2                              */
+ 37:
+ 38:/* *************** OUTPUT PINS *********************/
+ 39:PIN 19   = ROM_A15                   ; /* ROMA15                            */ 
+ 40:PIN 20   = ROMCS                     ; /* /ROMCS (active low)               */ 
+ 41:PIN 21   = RESET                     ; /* RESET (active high)               */ 
+ 42:PIN 22   = CIA                       ; /* /CIA (active low)                 */ 
+ 43:
+ 44:
+ 45:/** Declarations and Intermediate Variable Definitions **/
+ 46:Field addr = [A15..4];
+ 47:
+ 48:/** Logic Equations **/
+ 49:
+ 50:/* SID Chip Select */
+ 51:de_range = addr:[FD40..FD5F];
+ 52:hu_range = addr:[FE80..FE9F];
+ 53:CIA = !(PHI2 & (de_range # hu_range));          // Addresses are valid on Phi2 rising edge
+
+
+LISTING FOR LOGIC DESCRIPTION FILE: BURSTCART.pld                    Page 2
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Sat Apr 19 09:41:56 2025
+
+ 54:
+ 55:/* Active-low Reset to Active-high Reset (for 4520) */
+ 56:RESET = !nRESET;
+ 57:
+ 58:ROMCS   = !(!C1LO # !C1HI # !C2LO # !C2HI);
+ 59:ROM_A15 = !(!C1LO # !C1HI);
+ 60:
+ 61:
+
+
+
+Jedec Fuse Checksum       (4748)
+Jedec Transmit Checksum   (12f7)
