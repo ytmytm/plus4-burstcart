@@ -47,10 +47,9 @@ Field addr = [A15..4];
 
 /** Logic Equations **/
 
-/* SID Chip Select */
-de_range = addr:[FD40..FD5F];
-hu_range = addr:[FE80..FE9F];
-CIA = !(PHI2 & (de_range # hu_range));		// Addresses are valid on Phi2 rising edge
+/* CIA Chip Select */
+cia_range = addr:[FD90..FD9F];
+CIA = !(PHI2 & cia_range);		// Addresses are valid on Phi2 rising edge
 
 /* Active-low Reset to Active-high Reset (for 4520) */
 RESET = !nRESET;
