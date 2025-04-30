@@ -28,18 +28,22 @@ PIN 9    = A12                       ; /* A12                               */
 PIN 10   = A13                       ; /* A13                               */
 PIN 11   = A14                       ; /* A14                               */
 PIN 13   = A15                       ; /* A15                               */
-PIN 14   = nRESET                    ; /* /RESET (in, active low)           */
-PIN 15   = C1LO                      ; /* C1LO                              */
-PIN 16   = C1HI                      ; /* C1HI                              */
-PIN 17   = C2LO                      ; /* C2LO                              */
-PIN 18   = C2HI                      ; /* C2HI                              */
+PIN 14   = !nRESET                   ; /* /RESET (in, active low)           */
+PIN 15   = !C1LO                      ; /* C1LO                              */
+PIN 16   = !C1HI                      ; /* C1HI                              */
+PIN 17   = !C2LO                      ; /* C2LO                              */
+PIN 18   = !C2HI                      ; /* C2HI                              */
 PIN 23   = PHI2                      ; /* phi2                              */
 
 /* *************** OUTPUT PINS *********************/
-PIN 19   = ROM_A15                   ; /* ROMA15                            */ 
-PIN 20   = ROMCS                     ; /* /ROMCS (active low)               */ 
+PIN 22   = !ROM_A15                   ; /* ROMA15                            */ 
+PIN 20   = !ROMCS                     ; /* /ROMCS (active low)               */ 
 PIN 21   = RESET                     ; /* RESET (active high)               */ 
-PIN 22   = CIA                       ; /* /CIA (active low)                 */ 
+PIN 19   = !CIA                      ; /* /CIA (active low)                 */ 
+
+
+/*PIN 19   = !ROM_A15                   ; */ /* ROMA15                            */ 
+/*PIN 22   = !CIA                      ; */ /* /CIA (active low)                 */ 
 
 
 /** Declarations and Intermediate Variable Definitions **/
@@ -47,13 +51,12 @@ Field addr = [A15..4];
 
 /** Logic Equations **/
 
-/* SID Chip Select */
-de_range = addr:[FD40..FD5F];
-hu_range = addr:[FE80..FE9F];
-CIA = !(PHI2 & (de_range # hu_range));		// Addresses are valid on Phi2 rising edge
+/* CIA Chip Select */
+cia_range = addr:[FD90..FD9F];
+CIA = (PHI2 & cia_range);		// Addresses are valid on Phi2 rising edge
 
 /* Active-low Reset to Active-high Reset (for 4520) */
-RESET = !nRESET;
+RESET = nRESET;
 
-ROMCS   = !(!C1LO # !C1HI # !C2LO # !C2HI);
-ROM_A15 = !(!C1LO # !C1HI);
+ROMCS   = (C1LO # C1HI # C2LO # C2HI);
+ROM_A15 = (C1LO # C1HI);

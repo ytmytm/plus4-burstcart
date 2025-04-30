@@ -11,16 +11,16 @@ PIN   9 =  A12
 PIN  10 =  A13 
 PIN  11 =  A14 
 PIN  13 =  A15 
-PIN  16 =  C1HI 
-PIN  15 =  C1LO 
-PIN  18 =  C2HI 
-PIN  17 =  C2LO 
-PIN  22 =  CIA 
+PIN  16 = !C1HI 
+PIN  15 = !C1LO 
+PIN  18 = !C2HI 
+PIN  17 = !C2LO 
+PIN  19 = !CIA 
 PIN  23 =  PHI2 
 PIN  21 =  RESET 
-PIN  20 =  ROMCS 
-PIN  19 =  ROM_A15 
-PIN  14 =  nRESET 
+PIN  20 = !ROMCS 
+PIN  22 = !ROM_A15 
+PIN  14 = !nRESET 
 %END
 
 %FIELD
@@ -29,27 +29,32 @@ FIELD addr = A15,A14,A13,A12,A11,A10,A9,A8,A7,A6,A5,A4
 
 %EQUATION
 !CIA =>
-    !A5 & !A6 & A7 & !A8 & A9 & A10 & A11 & A12 & A13 & A14 & A15 & PHI2
-  # !A5 & A6 & !A7 & A8 & !A9 & A10 & A11 & A12 & A13 & A14 & A15 & PHI2
+    !A4
+  # A5
+  # A6
+  # !A7
+  # !A8
+  # A9
+  # !A10
+  # !A11
+  # !A12
+  # !A13
+  # !A14
+  # !A15
+  # !PHI2
 
 !RESET =>
     nRESET
 
 !ROMCS =>
-    !C1HI
-  # !C1LO
-  # !C2HI
-  # !C2LO
+    C1HI & C1LO & C2HI & C2LO
 
 !ROM_A15 =>
-    !C1HI
-  # !C1LO
+    C1HI & C1LO
+  # C1HI & C1LO & C2HI & C2LO
 
-de_range =>
-    !A5 & A6 & !A7 & A8 & !A9 & A10 & A11 & A12 & A13 & A14 & A15
-
-hu_range =>
-    !A5 & !A6 & A7 & !A8 & A9 & A10 & A11 & A12 & A13 & A14 & A15
+cia_range =>
+    A4 & !A5 & !A6 & A7 & A8 & !A9 & A10 & A11 & A12 & A13 & A14 & A15
 
 C1HI.oe  =>
     0 

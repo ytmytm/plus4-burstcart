@@ -5,7 +5,7 @@
 
 CUPL(WM)        5.0a Serial# 60008009
 Device          g22v10  Library DLIB-h-40-1
-Created         Sat Apr 19 09:41:56 2025
+Created         Wed Apr 30 21:02:43 2025
 Name            BURSTCART_PLUS4 
 Partno          00 
 Revision        01 
@@ -20,30 +20,35 @@ Location
 ===============================================================================
 
 !CIA =>
-    !A5 & !A6 & A7 & !A8 & A9 & A10 & A11 & A12 & A13 & A14 & A15 & PHI2
-  # !A5 & A6 & !A7 & A8 & !A9 & A10 & A11 & A12 & A13 & A14 & A15 & PHI2
+    !A4
+  # A5
+  # A6
+  # !A7
+  # !A8
+  # A9
+  # !A10
+  # !A11
+  # !A12
+  # !A13
+  # !A14
+  # !A15
+  # !PHI2
 
 !RESET =>
-    nRESET
+    !nRESET
 
 !ROMCS =>
-    !C1HI
-  # !C1LO
-  # !C2HI
-  # !C2LO
+    !C1HI & !C1LO & !C2HI & !C2LO
 
 !ROM_A15 =>
-    !C1HI
-  # !C1LO
+    !C1HI & !C1LO
+  # !C1HI & !C1LO & !C2HI & !C2LO
 
 addr =>
     A15 , A14 , A13 , A12 , A11 , A10 , A9 , A8 , A7 , A6 , A5 , A4
 
-de_range =>
-    !A5 & A6 & !A7 & A8 & !A9 & A10 & A11 & A12 & A13 & A14 & A15
-
-hu_range =>
-    !A5 & !A6 & A7 & !A8 & A9 & A10 & A11 & A12 & A13 & A14 & A15
+cia_range =>
+    A4 & !A5 & !A6 & A7 & A8 & !A9 & A10 & A11 & A12 & A13 & A14 & A15
 
 C1HI.oe  =>
     0 
@@ -96,28 +101,27 @@ Pol   Name              Ext     Pin     Type     Used   Pterms  Level
     A13                         10       V        -       -       -     
     A14                         11       V        -       -       -     
     A15                         13       V        -       -       -     
-    C1HI                        16       V        -       -       -     
-    C1LO                        15       V        -       -       -     
-    C2HI                        18       V        -       -       -     
-    C2LO                        17       V        -       -       -     
-    CIA                         22       V        2       10      2     
+ !  C1HI                        16       V        -       -       -     
+ !  C1LO                        15       V        -       -       -     
+ !  C2HI                        18       V        -       -       -     
+ !  C2LO                        17       V        -       -       -     
+ !  CIA                         19       V        13      16      2     
     PHI2                        23       V        -       -       -     
     RESET                       21       V        1       12      2     
-    ROMCS                       20       V        4       14      2     
-    ROM_A15                     19       V        2       16      2     
+ !  ROMCS                       20       V        1       14      2     
+ !  ROM_A15                     22       V        2       10      2     
     addr                        0        F        -       -       -     
-    de_range                    0        I        1       -       -     
-    hu_range                    0        I        1       -       -     
-    nRESET                      14       V        -       -       -     
+    cia_range                   0        I        1       -       -     
+ !  nRESET                      14       V        -       -       -     
     C1HI                oe      16       D        1       1       0     
     C1LO                oe      15       D        1       1       0     
     C2HI                oe      18       D        1       1       0     
     C2LO                oe      17       D        1       1       0     
-    CIA                 oe      22       D        1       1       0     
+    CIA                 oe      19       D        1       1       0     
     PHI2                oe      23       D        1       1       0     
     RESET               oe      21       D        1       1       0     
     ROMCS               oe      20       D        1       1       0     
-    ROM_A15             oe      19       D        1       1       0     
+    ROM_A15             oe      22       D        1       1       0     
     nRESET              oe      14       D        1       1       0     
 
 
@@ -149,8 +153,8 @@ Pin #23  05808 Mode  x-
  00396 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
 Pin #22  05810 Mode  -- 
  00440 -------------------------------------------- 
- 00484 --x--x---x--x----x--x---x---x---x---x---x-x- 
- 00528 --x--x--x----x--x----x--x---x---x---x---x-x- 
+ 00484 ------------------------------x---x--------- 
+ 00528 ----------------------x---x---x---x--------- 
  00572 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
  00616 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
  00660 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
@@ -175,10 +179,10 @@ Pin #21  05812 Mode  x-
  01452 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
 Pin #20  05814 Mode  -- 
  01496 -------------------------------------------- 
- 01540 -------------------------------x------------ 
- 01584 -----------------------------------x-------- 
- 01628 -----------------------x-------------------- 
- 01672 ---------------------------x---------------- 
+ 01540 ----------------------x---x---x---x--------- 
+ 01584 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+ 01628 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+ 01672 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
  01716 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
  01760 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
  01804 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
@@ -191,19 +195,19 @@ Pin #20  05814 Mode  --
  02112 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
 Pin #19  05816 Mode  -- 
  02156 -------------------------------------------- 
- 02200 -------------------------------x------------ 
- 02244 -----------------------------------x-------- 
- 02288 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
- 02332 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
- 02376 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
- 02420 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
- 02464 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
- 02508 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
- 02552 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
- 02596 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
- 02640 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
- 02684 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
- 02728 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+ 02200 -x------------------------------------------ 
+ 02244 ----x--------------------------------------- 
+ 02288 --------x----------------------------------- 
+ 02332 -------------x------------------------------ 
+ 02376 -----------------x-------------------------- 
+ 02420 --------------------x----------------------- 
+ 02464 -------------------------x------------------ 
+ 02508 -----------------------------x-------------- 
+ 02552 ---------------------------------x---------- 
+ 02596 -------------------------------------x------ 
+ 02640 -----------------------------------------x-- 
+ 02684 -------------------------------------------x 
+ 02728 ---x---------------------------------------- 
  02772 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
  02816 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
  02860 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
@@ -290,15 +294,15 @@ LEGEND    X : fuse not blown
                               |BURSTCART_PLUS|
                        A4 x---|1           24|---x Vcc                      
                        A5 x---|2           23|---x PHI2                     
-                       A6 x---|3           22|---x CIA                      
+                       A6 x---|3           22|---x !ROM_A15                 
                        A7 x---|4           21|---x RESET                    
-                       A8 x---|5           20|---x ROMCS                    
-                       A9 x---|6           19|---x ROM_A15                  
-                      A10 x---|7           18|---x C2HI                     
-                      A11 x---|8           17|---x C2LO                     
-                      A12 x---|9           16|---x C1HI                     
-                      A13 x---|10          15|---x C1LO                     
-                      A14 x---|11          14|---x nRESET                   
+                       A8 x---|5           20|---x !ROMCS                   
+                       A9 x---|6           19|---x !CIA                     
+                      A10 x---|7           18|---x !C2HI                    
+                      A11 x---|8           17|---x !C2LO                    
+                      A12 x---|9           16|---x !C1HI                    
+                      A13 x---|10          15|---x !C1LO                    
+                      A14 x---|11          14|---x !nRESET                  
                       GND x---|12          13|---x A15                      
                               |______________|
 
