@@ -8,10 +8,10 @@
     (autoroute on)
     (postroute on)
     (vias on)
-    (via_costs 5)
-    (plane_via_costs 5)
+    (via_costs 2)
+    (plane_via_costs 1)
     (start_ripup_costs 100)
-    (start_pass_no 8299)
+    (start_pass_no 6093)
     (layer_rule F.Cu
       (active on)
       (preferred_direction vertical)
@@ -59,13 +59,14 @@
     /PB0 /PB1 /PB2 /PB3 /PB4 /PB5 /PB6 /PB7
     /~{PC} /TOD /~{IRQ} /R{slash}~{W} /ciaclk /~{FLAG} /PHI2 /D7
     /D6 /D5 /D4 /D3 /D2 /D1 /D0 /~{RESET}
-    /~{CIA} "IEC_RESET" GND "IEC_ATN" "IEC_CLK" "IEC_DATA" /VCC /C1HI
+    /~{CIA} "IEC_RESET" GND "IEC_ATN" "IEC_CLK" "IEC_DATA" VCC /C1HI
     /C2LO /C2HI /~{CS1} /~{CS0} "unconnected-(U$1-Pad11)" /MUX /BA /AEC
     "/EXT_AUDIO" /NC2 /C1LO /NC3 /~{RAS} /PHI0 /A15 /A14
     /A13 /A12 /A11 /A10 /A9 /A8 /A7 /A6
     /A5 /A4 /A3 /A2 /A1 /A0 /NC1 "/ROM_A15"
-    /~{ROMCS} +5V "IEC_SRQ" "Net-(JP1-Pad2)" /reset "Net-(R1-Pad2)" "unconnected-(U2-Pad4)" "unconnected-(U2-Pad5)"
-    "unconnected-(U2-Pad6)" "unconnected-(U2-Pad11)" "unconnected-(U2-Pad12)" "unconnected-(U2-Pad13)" "unconnected-(U2-Pad14)" "Net-(JP2-Pad1)" "unconnected-(U5-Pad3)" "unconnected-(U5-Pad7)"
+    /~{ROMCS} "Net-(C5-Pad1)" "IEC_SRQ" /reset "Net-(R1-Pad2)" "unconnected-(U2-Pad4)" "unconnected-(U2-Pad5)" "unconnected-(U2-Pad6)"
+    "unconnected-(U2-Pad11)" "unconnected-(U2-Pad12)" "unconnected-(U2-Pad13)" "unconnected-(U2-Pad14)" "unconnected-(U5-Pad3)" "unconnected-(U5-Pad7)" "Net-(U2-Pad7)" "Net-(JP3-Pad1)"
+    "unconnected-(U5-Pad6)"
     (clearance_class default)
     (via_rule default)
     (rule
