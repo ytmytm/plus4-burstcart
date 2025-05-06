@@ -43,9 +43,6 @@ module cia(
     input [15:0] A,
     inout [7:0] D,
 
-	 // unused inputs
-	 input phi2, aec, ba,
-
     // Serial port.
     inout CNT,
     inout SP,

@@ -23,10 +23,10 @@
 *.lfp
 *.spl
 *.sym
-Fake6523_html/*
-Fake1551Paddle_html/*
+cia_html/*
 _ngo/*
 _xmsgs/*
 iseconfig/*
 xst/*
 xlnx_auto_0_xdb/*
+*.lck

@@ -1,0 +1,48 @@
+
+#PINLOCK_BEGIN
+
+#Tue May  6 21:23:17 2025
+
+NET "A<0>"           LOC =  "S:PIN89";
+NET "A<10>"          LOC =  "S:PIN90";
+NET "A<11>"          LOC =  "S:PIN86";
+NET "A<12>"          LOC =  "S:PIN91";
+NET "A<13>"          LOC =  "S:PIN92";
+NET "A<14>"          LOC =  "S:PIN82";
+NET "A<15>"          LOC =  "S:PIN81";
+NET "A<1>"           LOC =  "S:PIN80";
+NET "A<2>"           LOC =  "S:PIN94";
+NET "A<3>"           LOC =  "S:PIN79";
+NET "A<4>"           LOC =  "S:PIN78";
+NET "A<5>"           LOC =  "S:PIN96";
+NET "A<6>"           LOC =  "S:PIN77";
+NET "A<7>"           LOC =  "S:PIN76";
+NET "A<8>"           LOC =  "S:PIN72";
+NET "A<9>"           LOC =  "S:PIN71";
+NET "E_CLK"          LOC =  "S:PIN23";
+NET "MUX"            LOC =  "S:PIN85";
+NET "RESET_n"        LOC =  "S:PIN1";
+NET "RW"             LOC =  "S:PIN6";
+NET "aec"            LOC =  "S:PIN66";
+NET "ba"             LOC =  "S:PIN65";
+NET "c1hi"           LOC =  "S:PIN95";
+NET "c1lo"           LOC =  "S:PIN97";
+NET "c2hi"           LOC =  "S:PIN73";
+NET "c2lo"           LOC =  "S:PIN70";
+NET "phi2"           LOC =  "S:PIN64";
+NET "_unused"        LOC =  "S:PIN11";
+NET "SP"             LOC =  "S:PIN63";
+NET "IRQ_n"          LOC =  "S:PIN87";
+NET "CNT"            LOC =  "S:PIN22";
+NET "_resetout"      LOC =  "S:PIN93";
+NET "D<0>"           LOC =  "S:PIN74";
+NET "D<1>"           LOC =  "S:PIN10";
+NET "D<2>"           LOC =  "S:PIN2";
+NET "D<3>"           LOC =  "S:PIN3";
+NET "D<4>"           LOC =  "S:PIN4";
+NET "D<5>"           LOC =  "S:PIN7";
+NET "D<6>"           LOC =  "S:PIN8";
+NET "D<7>"           LOC =  "S:PIN9";
+NET "rom_a15"        LOC =  "S:PIN24";
+NET "rom_cs"         LOC =  "S:PIN68";
+#PINLOCK_END

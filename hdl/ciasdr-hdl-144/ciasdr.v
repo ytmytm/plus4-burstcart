@@ -68,9 +68,15 @@ module cia(
 	 // 3.3V reset
 	 output _resetout,
 
+	 // just to keep pin
+	 output _unused,
+
     // Interrupt.
     output IRQ_n
     );
+
+	 // some combination just to keep phi2+aec+ba in the model and auto assign pins
+	 assign _unused = phi2 && aec && ba;
 
 	 // 3.3V RESET only low or floating
 	 assign _resetout = !RESET_n ? RESET_n : 1'bz;
