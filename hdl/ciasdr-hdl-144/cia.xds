@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<DesignStrategy goal="CIASDR" strategy="Area" version="12.1">
+
+  <Description>CIASDR strategy optimized for area</Description>
+
+  <DeviceList devices="xc9500xl"/>
+
+  <Properties>
+    <property name="Synthesize - XST:Optimization Goal" value="Area"/>
+    <property name="Synthesize - XST:Optimization Effort" value="High"/>
+    <property name="Fit:Implementation Template" value="Optimize Density"/>
+    <property name="Fit:Logic Optimization" value="Density"/>
+  </Properties>
+
+</DesignStrategy>

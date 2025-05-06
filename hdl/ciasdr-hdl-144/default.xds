@@ -1,0 +1,6 @@
+<DesignStrategy goal="Balanced" strategy="Xilinx Default (unlocked)" version="10.0">
+	<Description>The Default strategy provides a balanced optimization of performance results vs. runtime. The default property values correspond to the default values of each of the underlying implementation tools. This strategy keeps all properties in an unlocked state so that you can modify the values as you wish.</Description>
+	<DeviceList devices=""/>
+	<properties>
+	</properties>
+</DesignStrategy>
