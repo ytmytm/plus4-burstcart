@@ -1,0 +1,59 @@
+Name     BURSTCART_VIA_PLUS4 ;
+PartNo   00 ;
+Date     2025-05-06;
+Revision 01 ;
+Designer Maciej Witkowiak ;
+Company  YTM Enterprises ;
+Assembly None ;
+Location  ;
+Device   g22v10 ;
+
+/* input 1-11 */
+/* i/o/q 13-23 */
+/* GND 12, VCC 24 */
+
+/* https://class.ece.uw.edu/475/peckol/doc/cupl.html */
+/* https://nreeder.com/programminggal/ */
+
+/* *************** INPUT PINS *********************/
+PIN 1    = A4                        ; /* A4                                */
+PIN 2    = A5                        ; /* A5                                */
+PIN 3    = A6                        ; /* A6                                */
+PIN 4    = A7                        ; /* A7                                */
+PIN 5    = A8                        ; /* A8                                */
+PIN 6    = A9                        ; /* A9                                */
+PIN 7    = A10                       ; /* A10                               */
+PIN 8    = A11                       ; /* A11                               */
+PIN 9    = A12                       ; /* A12                               */
+PIN 10   = A13                       ; /* A13                               */
+PIN 11   = A14                       ; /* A14                               */
+PIN 13   = A15                       ; /* A15                               */
+PIN 14   = PHI                       ; /* PHI0 or PHI2                      */
+PIN 15   = !C1LO                     ; /* C1LO                              */
+PIN 16   = !C1HI                     ; /* C1HI                              */
+PIN 17   = !SP_IN                    ; /* serial data in (active low)       */
+PIN 21   = !CNT_IN                   ; /* serial clock in (active low)      */
+PIN 23   = !PB0                      ; /* serial port direction (1=in, 0=out) */
+
+/* *************** OUTPUT PINS *********************/
+PIN 18   = SP_OUT                    ; /* serial data out (high=pass GND)   */
+PIN 19   = !VIA                      ; /* /CIA (active low)                 */ 
+PIN 20   = !ROMCS                    ; /* /ROMCS (active low)               */ 
+PIN 22   = CNT_OUT                   ; /* serial clock out (high=pas GND)   */
+
+/** Declarations and Intermediate Variable Definitions **/
+Field addr = [A15..4];
+
+/** Logic Equations **/
+
+/* CIA Chip Select */
+via_range = addr:[FDA0..FDAF];
+VIA = (PHI & via_range);		// Addresses are valid on Phi2 rising edge
+
+/* ROM 32K */
+ROMCS   = (C1LO # C1HI);
+
+/* serial port output driver */
+/* active = pull to 0, inactive = HiZ -> pullup to 1 */
+SP_OUT  = (PB0 & SP_IN);
+CNT_OUT = (PB0 & CNT_IN);

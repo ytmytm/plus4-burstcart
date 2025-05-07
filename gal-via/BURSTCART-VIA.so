@@ -1,0 +1,27 @@
+CSIM(WM): CUPL Simulation Program
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+CREATED Tue May 06 10:45:01 2025
+
+LISTING FOR SIMULATION FILE: BURSTCART-VIA.si
+
+   1: Name     BURSTCART_VIA_PLUS4 ;
+   2: PartNo   00;
+   3: Date     2025-05-06;
+   4: Revision 01;
+   5: Designer Maciej Witkowiak;
+   6: Company  YTM Enterprises;
+   7: Assembly None;
+   8: Location ;
+   9: 
+  10: 
+  11: FIELD addr = [A15,A14,A13,A12,A11,A10,A9,A8,A7,A6,A5,A4];
+  12:
+  13: ORDER: A4, A5, A6, A7; 
+  14: 
+
+=============
+      AAAA   
+      4567   
+=============
+0001: 0000

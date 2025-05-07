@@ -11,7 +11,7 @@
     (via_costs 2)
     (plane_via_costs 1)
     (start_ripup_costs 100)
-    (start_pass_no 6093)
+    (start_pass_no 5767)
     (layer_rule F.Cu
       (active on)
       (preferred_direction vertical)
@@ -65,8 +65,8 @@
     /A13 /A12 /A11 /A10 /A9 /A8 /A7 /A6
     /A5 /A4 /A3 /A2 /A1 /A0 /NC1 "/ROM_A15"
     /~{ROMCS} "Net-(C5-Pad1)" "IEC_SRQ" /reset "Net-(R1-Pad2)" "unconnected-(U2-Pad4)" "unconnected-(U2-Pad5)" "unconnected-(U2-Pad6)"
-    "unconnected-(U2-Pad11)" "unconnected-(U2-Pad12)" "unconnected-(U2-Pad13)" "unconnected-(U2-Pad14)" "unconnected-(U5-Pad3)" "unconnected-(U5-Pad7)" "Net-(U2-Pad7)" "Net-(JP3-Pad1)"
-    "unconnected-(U5-Pad6)"
+    "unconnected-(U2-Pad11)" "unconnected-(U2-Pad12)" "unconnected-(U2-Pad13)" "unconnected-(U2-Pad14)" "unconnected-(U5-Pad3)" "unconnected-(U5-Pad7)" "Net-(JP1-Pad2)" "Net-(JP3-Pad1)"
+    "Net-(JP4-Pad2)"
     (clearance_class default)
     (via_rule default)
     (rule

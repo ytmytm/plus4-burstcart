@@ -1,0 +1,39 @@
+
+#PINLOCK_BEGIN
+
+#Tue May  6 21:35:47 2025
+
+NET "A<0>"           LOC =  "S:PIN28";
+NET "A<10>"          LOC =  "S:PIN27";
+NET "A<11>"          LOC =  "S:PIN23";
+NET "A<12>"          LOC =  "S:PIN22";
+NET "A<13>"          LOC =  "S:PIN21";
+NET "A<14>"          LOC =  "S:PIN20";
+NET "A<15>"          LOC =  "S:PIN40";
+NET "A<4>"           LOC =  "S:PIN41";
+NET "A<5>"           LOC =  "S:PIN18";
+NET "A<6>"           LOC =  "S:PIN42";
+NET "A<7>"           LOC =  "S:PIN16";
+NET "A<8>"           LOC =  "S:PIN14";
+NET "A<9>"           LOC =  "S:PIN12";
+NET "E_CLK"          LOC =  "S:PIN44";
+NET "MUX"            LOC =  "S:PIN8";
+NET "RESET_n"        LOC =  "S:PIN33";
+NET "RW"             LOC =  "S:PIN6";
+NET "c1hi"           LOC =  "S:PIN34";
+NET "c1lo"           LOC =  "S:PIN36";
+NET "c2hi"           LOC =  "S:PIN1";
+NET "c2lo"           LOC =  "S:PIN3";
+NET "SP"             LOC =  "S:PIN38";
+NET "CNT"            LOC =  "S:PIN43";
+NET "D<0>"           LOC =  "S:PIN39";
+NET "D<1>"           LOC =  "S:PIN2";
+NET "D<2>"           LOC =  "S:PIN19";
+NET "D<3>"           LOC =  "S:PIN29";
+NET "D<4>"           LOC =  "S:PIN30";
+NET "D<5>"           LOC =  "S:PIN31";
+NET "D<6>"           LOC =  "S:PIN32";
+NET "D<7>"           LOC =  "S:PIN37";
+NET "rom_a15"        LOC =  "S:PIN5";
+NET "rom_cs"         LOC =  "S:PIN13";
+#PINLOCK_END

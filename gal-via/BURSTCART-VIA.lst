@@ -1,0 +1,82 @@
+LISTING FOR LOGIC DESCRIPTION FILE: BURSTCART-VIA.pld                Page 1
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Tue May 06 10:45:01 2025
+
+  1:Name     BURSTCART_VIA_PLUS4 ;
+  2:PartNo   00 ;
+  3:Date     2025-05-06;
+  4:Revision 01 ;
+  5:Designer Maciej Witkowiak ;
+  6:Company  YTM Enterprises ;
+  7:Assembly None ;
+  8:Location  ;
+  9:Device   g22v10 ;
+ 10:
+ 11:/* input 1-11 */
+ 12:/* i/o/q 13-23 */
+ 13:/* GND 12, VCC 24 */
+ 14:
+ 15:/* https://class.ece.uw.edu/475/peckol/doc/cupl.html */
+ 16:/* https://nreeder.com/programminggal/ */
+ 17:
+ 18:/* *************** INPUT PINS *********************/
+ 19:PIN 1    = A4                        ; /* A4                                */
+ 20:PIN 2    = A5                        ; /* A5                                */
+ 21:PIN 3    = A6                        ; /* A6                                */
+ 22:PIN 4    = A7                        ; /* A7                                */
+ 23:PIN 5    = A8                        ; /* A8                                */
+ 24:PIN 6    = A9                        ; /* A9                                */
+ 25:PIN 7    = A10                       ; /* A10                               */
+ 26:PIN 8    = A11                       ; /* A11                               */
+ 27:PIN 9    = A12                       ; /* A12                               */
+ 28:PIN 10   = A13                       ; /* A13                               */
+ 29:PIN 11   = A14                       ; /* A14                               */
+ 30:PIN 13   = A15                       ; /* A15                               */
+ 31:PIN 14   = PHI                       ; /* PHI0 or PHI2                      */
+ 32:PIN 15   = !C1LO                     ; /* C1LO                              */
+ 33:PIN 16   = !C1HI                     ; /* C1HI                              */
+ 34:PIN 17   = !SP_IN                    ; /* serial data in (active low)       */
+ 35:PIN 21   = !CNT_IN                   ; /* serial clock in (active low)      */
+ 36:PIN 23   = !PB0                      ; /* serial port direction (1=in, 0=out) */
+ 37:
+ 38:/* *************** OUTPUT PINS *********************/
+ 39:PIN 18   = SP_OUT                    ; /* serial data out (high=pass GND)   */
+ 40:PIN 19   = !VIA                      ; /* /CIA (active low)                 */ 
+ 41:PIN 20   = !ROMCS                    ; /* /ROMCS (active low)               */ 
+ 42:PIN 22   = CNT_OUT                   ; /* serial clock out (high=pas GND)   */
+ 43:
+ 44:/** Declarations and Intermediate Variable Definitions **/
+ 45:Field addr = [A15..4];
+ 46:
+ 47:/** Logic Equations **/
+ 48:
+ 49:/* CIA Chip Select */
+ 50:via_range = addr:[FDA0..FDAF];
+ 51:VIA = (PHI & via_range);                // Addresses are valid on Phi2 rising edge
+
+ 52:
+ 53:/* ROM 32K */
+
+LISTING FOR LOGIC DESCRIPTION FILE: BURSTCART-VIA.pld                Page 2
+
+CUPL(WM): Universal Compiler for Programmable Logic
+Version 5.0a Serial# 60008009
+Copyright (c) 1983, 1998 Logical Devices, Inc.
+Created Tue May 06 10:45:01 2025
+
+ 54:ROMCS   = (C1LO # C1HI);
+ 55:
+ 56:/* serial port output driver */
+ 57:/* active = pull to 0, inactive = HiZ -> pullup to 1 */
+ 58:SP_OUT  = (PB0 & SP_IN);
+ 59:CNT_OUT = (PB0 & CNT_IN);
+ 60:
+ 61:
+
+
+
+Jedec Fuse Checksum       (7926)
+Jedec Transmit Checksum   (71d2)

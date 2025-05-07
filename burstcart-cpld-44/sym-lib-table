@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name "burstcart")(type "KiCad")(uri "${KIPRJMOD}/burstcart.kicad_sym")(options "")(descr ""))
+  (lib (name "xc9572xl-vq64")(type "KiCad")(uri "/mnt/batibat/Maciejdev/plus4/burstcart/kicad-burstcart/xc9572xl-vq64.kicad_sym")(options "")(descr ""))
+)
