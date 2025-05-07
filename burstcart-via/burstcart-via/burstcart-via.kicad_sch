@@ -1810,7 +1810,7 @@
   )
 
   (no_connect (at 75.565 71.755) (uuid 153fd416-78c9-434c-892e-ba9eaea2bb66))
-  (no_connect (at 75.565 74.295) (uuid 153fd416-78c9-434c-892e-ba9eaea2bb66))
+  (no_connect (at 75.565 74.295) (uuid 153fd416-78c9-434c-892e-ba9eaea2bb67))
   (no_connect (at 27.305 33.655) (uuid 45dc272b-4bf5-438c-a3b5-6c5a096f902f))
   (no_connect (at 75.565 64.135) (uuid 69050130-9dc5-48e8-99fd-d445315fef81))
   (no_connect (at 218.44 140.97) (uuid 72f133d3-83e0-4bf2-aa00-b44adb69d20d))
@@ -2438,7 +2438,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 58da48f6-3ad5-4a67-8b45-f6bb20042de7)
   )
-  (text "GAL CLOCK\nSELECTION" (at 213.995 53.975 0)
+  (text "GAL CLOCK\nSELECTION\n(probably Phi0)" (at 213.995 53.975 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 5e040d18-cf7e-4c98-a454-63d9b1914a8c)
   )
@@ -3535,7 +3535,7 @@
     (pin "9" (uuid 1d23aa5e-340b-4f26-94b6-b75b33b40971))
   )
 
-  (symbol (lib_id "Jumper:Jumper_3_Bridged12") (at 217.17 63.5 90) (unit 1)
+  (symbol (lib_id "Jumper:Jumper_3_Open") (at 217.17 63.5 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 3b511bdc-fdd2-476b-bc62-c0483bf6b3f0)
     (property "Reference" "JP3" (id 0) (at 214.63 63.4999 90)
@@ -3544,7 +3544,7 @@
     (property "Value" "Jumper_3_Bridged12" (id 1) (at 214.63 64.7699 90)
       (effects (font (size 1.27 1.27)) (justify left) hide)
     )
-    (property "Footprint" "Jumper:SolderJumper-3_P1.3mm_Bridged12_Pad1.0x1.5mm_NumberLabels" (id 2) (at 217.17 63.5 0)
+    (property "Footprint" "Jumper:SolderJumper-3_P1.3mm_Open_Pad1.0x1.5mm_NumberLabels" (id 2) (at 217.17 63.5 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "~" (id 3) (at 217.17 63.5 0)
@@ -4395,7 +4395,7 @@
       (reference "JP2") (unit 1) (value "Jumper_3_Bridged12") (footprint "Jumper:SolderJumper-3_P1.3mm_Bridged12_Pad1.0x1.5mm_NumberLabels")
     )
     (path "/3b511bdc-fdd2-476b-bc62-c0483bf6b3f0"
-      (reference "JP3") (unit 1) (value "Jumper_3_Bridged12") (footprint "Jumper:SolderJumper-3_P1.3mm_Bridged12_Pad1.0x1.5mm_NumberLabels")
+      (reference "JP3") (unit 1) (value "Jumper_3_Bridged12") (footprint "Jumper:SolderJumper-3_P1.3mm_Open_Pad1.0x1.5mm_NumberLabels")
     )
     (path "/6fdcac5e-1e7e-4702-b89b-f9333852c3de"
       (reference "JP4") (unit 1) (value "Jumper_3_Bridged12") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical")
