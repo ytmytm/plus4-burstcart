@@ -145,6 +145,17 @@ module cia(
 
     wire shift_complete = shift_in_complete | shift_out_complete;
 
+	 reg shift_complete_latched;
+
+	 always @(posedge E_CLK or negedge RESET_n) begin
+		 if (!RESET_n)
+			  shift_complete_latched <= 1'b0;
+		 else if (shift_complete)
+			  shift_complete_latched <= 1'b1;
+		 else if (seladdr && RW && A[0] == REG_CRA)
+			  shift_complete_latched <= 1'b0;  // clear flag on CPU read
+	 end
+
     // register writes
     always @(negedge E_CLK or negedge RESET_n) begin
         if (!RESET_n) begin
