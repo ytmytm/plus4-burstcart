@@ -134,14 +134,6 @@ module cia(
             shift_in_complete_ack <= shift_in_complete_req;
     end
 
-    // Update sp_output.
-    always @(negedge E_CLK or negedge RESET_n) begin
-        if (!RESET_n)
-            sp_output <= 1'b0;
-        else if (seladdr && !RW && A[0] == REG_CRA)
-            sp_output <= D[6];
-    end
-
     reg [7:0] sdr_out;
     reg sdr_out_new_data;
     reg shift_out_running;
@@ -153,11 +145,18 @@ module cia(
 
     wire shift_complete = shift_in_complete | shift_out_complete;
 
+    // register writes
     always @(negedge E_CLK or negedge RESET_n) begin
-        if (!RESET_n)
+        if (!RESET_n) begin
+            sp_output <= 1'b0;
             sdr_out <= 8'd0;
-        else if (seladdr && !RW && A[0] == REG_SDR)
-            sdr_out <= D;
+		  end
+        else if (seladdr && !RW) begin
+			  case (A[0])
+					REG_SDR: sdr_out <= D;
+					REG_CRA: sp_output <= D[6];
+			  endcase
+		  end
     end
 
     always @(negedge E_CLK or negedge RESET_n) begin
