@@ -28,7 +28,7 @@
  * MW: removed:
  *     port A/B/FLAG/PC/TOD, control register B, timer A bits 4-15, IRQ, ICR, ICR mask
  *     changed:
- *		 timer A (counter and latch) is 3-bit now, without register, only internal counting down from 7, no latch, no stop
+ *		 timer A (counter and latch) is 2-bit now, without register, only internal counting down from 1, no latch, no stop
  *     only two registers: SDR data (R/W) vs serial status+output (R) / serial output (W)
  *     added:
  *     romcs, rom_a15, full address bus for I/O selection, MUX and optional: Phi2/AEC/BA, (E_CLK is Phi0)
@@ -70,19 +70,19 @@ module cia(
     reg sp_output;
 
     // Interval timers.
-    reg [2:0] ta_counter;
+    reg ta_counter;
 
-    wire ta_underflowing = ta_counter == 3'd0;
+    wire ta_underflowing = ta_counter == 1'd0;
 
     // Update ta_counter.
     always @(negedge E_CLK or negedge RESET_n) begin
         if (!RESET_n)
-            ta_counter <= 3'd0;
+            ta_counter <= 1'd0;
         else begin
-                if (ta_counter == 3'd0)
-                    ta_counter <= 3'd7;
+                if (ta_counter == 1'd0)
+                    ta_counter <= 1'd1;
                 else
-                    ta_counter <= ta_counter - 3'd1;
+                    ta_counter <= ta_counter - 1'd1;
         end
     end
 
