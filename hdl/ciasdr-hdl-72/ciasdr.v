@@ -147,13 +147,15 @@ module cia(
 
 	 reg shift_complete_latched;
 
-	 always @(posedge E_CLK or negedge RESET_n) begin
+  	 always @(posedge E_CLK or negedge RESET_n) begin
 		 if (!RESET_n)
-			  shift_complete_latched <= 1'b0;
+			  shift_complete_latched <= 1'b0;	// clear flag on reset
 		 else if (shift_complete)
-			  shift_complete_latched <= 1'b1;
-		 else if (seladdr && RW && A[0] == REG_CRA)
-			  shift_complete_latched <= 1'b0;  // clear flag on CPU read
+			  shift_complete_latched <= 1'b1;	// set flag on shift in/out completed
+       else if (seladdr && !RW)
+			  shift_complete_latched <= 1'b0;	// clear flag on any register write
+		 else if (seladdr && RW && A[0] == REG_SDR)	// clear flag on data register read
+			  shift_complete_latched <= 1'b0;
 	 end
 
     // register writes
@@ -243,7 +245,7 @@ module cia(
 		if (seladdr) begin
         case (A[0])
             REG_SDR: data_out <= sdr_in;
-            REG_CRA: data_out <= {1'b0, sp_output, 2'b0, shift_complete, 3'b0};
+            REG_CRA: data_out <= {1'b0, sp_output, 2'b0, shift_complete_latched, 3'b0};
         endcase
 		end
     end
