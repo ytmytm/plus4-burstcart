@@ -24,12 +24,13 @@
  */
 
 /*
- * MW: options: XC9572XL-5VQ64 and 48/44 one
+ * MW: options: XC9572XL-5VQ64 and VQ44 one
  * MW: removed:
  *     port A/B/FLAG/PC/TOD, control register B, timer A bits 4-15, IRQ, ICR, ICR mask
  *     changed:
- *		 timer A (counter and latch) is 2-bit now, without register, only internal counting down from 1, no latch, no stop
+ *		 timer A (counter and latch) is 1-bit now, without register, only internal counting down from 1, no latch, no stop
  *     only two registers: SDR data (R/W) vs serial status+output (R) / serial output (W)
+ *		 status is cleared on register write (send data, change direction) and on data register read (receive data)
  *     added:
  *     romcs, rom_a15, full address bus for I/O selection, MUX and optional: Phi2/AEC/BA, (E_CLK is Phi0)
  */
