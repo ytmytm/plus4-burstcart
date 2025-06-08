@@ -28,4 +28,4 @@ fp-info-cache
 *.xml
 *.csv
 
-gal/*.pdf
+*/gal/*.pdf
