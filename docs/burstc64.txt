@@ -1,27 +1,10 @@
 ? attiny hw z MUX (jak niżej)
 
-? basic wedge https://jimlawless.net/blog/posts/basic-wedge/
-? z tokenami https://github.com/barryw/CustomBasicCommands
-? DOS5.1 https://www.c64-wiki.com/wiki/DOS_Wedge (+moje FD DD-001)
-	? przechwytywanie wektora GONE nie dziala, raczej przejac procedure CHRGET (0473) / CHRGOT (0479) (GET - zwieksza $3b/c, GOT - tylko czyta)
-	? raczej tokenizer 0304 (8956)
-	? break 8c60 -> odkrycie wbudowanych funkcji
-		DIR = C8BC
-		DLOAD = C951
-		DSAVE = C941
+[20250708]
+- ROM section moved to https://github.com/ytmytm/plus4-parobek
+- updated VIA version to KiCad9, corrected silkscreen text and added GAL clock connection to Phi0 as default
 
-? port-turbo https://plus4world.powweb.com/software/Port-Turbo_V1 - 1541 w/ parallel cable, w/ 8255 lub 6529, no handshake
-! transfers with VIA handshake on 1541 side https://github.com/ytmytm/geos/blob/feature-drv1541parallel/drv/drv1541parallel.s
-	(nice but no benefit - data comes from drive head, is limited by that)
-
-TODO:
-! NA SCHEMACIE VIA trzeba zmienić footprint na JP4 (zegar GAL) - ma być 3-2 = Phi0
-
-BUG:
-DSAVE always uses #8
-secondary address messedup for burst load (1581), always loads to file-addr
-
-[2025075]
+[20250705]
 - updated https://github.com/ytmytm/1541-RAMBOardII ROM patches:
   - SpeedDOS loader for all ROM options (CBM, Jiffy too)
   - signature at $A000 and jumptable at $A003
