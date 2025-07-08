@@ -96,3 +96,7 @@ The single IEC port on the cartridge has only the hardware data and clock lines 
 The 1541 drive's VIA#1 port A is unused. On the C64, this is connected to the User Port, along with two hardware handshake lines, providing the fastest possible connection between the VIA and CIA.
 
 Here we connect it to port A as well. Note that on the BurstCart side, the handshake lines are connected to CA1/CA2 corresponding to port A, but to CA2/CB1 on the 1541 side. This is not symmetrical because on the 1541, CA1 from VIA#1 was already used for another purpose.
+
+## Additional Resources
+
+All files necessary for manufacturing, including Gerbers, schematic, GAL firmware, and ROM, can be found in the [GitHub releases section](https://github.com/ytmytm/plus4-burstcart/releases).
