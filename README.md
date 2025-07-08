@@ -32,6 +32,8 @@ The PCB had enough space for two IEC ports as a passthrough.
 
 This is an attempt to drop legacy chips altogether. It's not completed, and it doesn't work yet.
 
+The electronic part (schematic design, PCB, connections etc.) is proven to work. The logic part doesn't work completely. It seems to lose bytes (or get framing errors) upon receiving the data.
+
 Due to the limited number of gates, it only implements small parts of the CIA, such as timer A with a fixed rate, the hardware serial port, and the status register.
 
 ## Hardware
