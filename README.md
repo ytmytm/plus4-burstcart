@@ -20,6 +20,12 @@ VIA Port B is not used, except for bit 0, which controls the direction of the se
 
 Other attempts included in the repository are:
 
+### CPLD
+
+This is an attempt to drop legacy chips altogether.
+
+Due to the limited number of gates, it only implements small parts of the CIA, such as timer A with a fixed rate, the hardware serial port, and the status register. The implementation does only what it necessary to make burst protocol work: to be able to send a byte via burst to enable burst protocol and to receive bytes on serial port with external clock.
+
 ### CIA (6526) - abandoned
 
 This seemed obvious as CBM themselves added CIA just for this purpose to 1571. However, the timing differences made it impossible to use the CIA reliably with the screen on.
@@ -28,15 +34,9 @@ These chips are also hard to obtain.
 
 The PCB had enough space for two IEC ports as a passthrough.
 
-### CPLD - experimental
-
-This is an attempt to drop legacy chips altogether. It's not completed, and it doesn't work yet.
-
-The electronic part (schematic design, PCB, connections etc.) is proven to work. The logic part doesn't work completely. It seems to lose bytes (or get framing errors) upon receiving the data.
-
-Due to the limited number of gates, it only implements small parts of the CIA, such as timer A with a fixed rate, the hardware serial port, and the status register.
-
 ## Hardware
+
+### VIA
 
 KiCad 6.0 project files are available in the [`burstcart-via/kicad/`](burstcart-via/kicad/) directory.
 
@@ -44,9 +44,17 @@ Schematic is available as [`burstcart-via.pdf`](burstcart-via/kicad/plots/burstc
 
 Gerber files for manufacturing are available from [`burstcart-via/kicad/plots/`](burstcart-via/kicad/plots/) directory.
 
+### CPLD
+
+KiCad 6.0 project files are available in the [`burstcart-cpld/kicad/`](burstcart-cpld/kicad/) directory.
+
+Schematic is available as [`burstcart-cpld.pdf`](burstcart-cpld/kicad/plots/burstcart-cpld-44.pdf) in the `burstcart-cpld/kicad/plots/` directory.
+
+Gerber files for manufacturing are available from [`burstcart-cpld/kicad/plots/`](burstcart-cpld/kicad/plots/) directory.
+
 ## Firmware 
 
-### GAL22V10
+### VIA
 
 The firmware for the GAL22V10 programmable logic device is provided as a compiled JEDEC file [`BURSTCART-VIA.jed`](burstcart-via/gal/BURSTCART-VIA.jed).
 
@@ -54,11 +62,23 @@ The source code for the GAL logic is written in CUPL and available as [`burstcar
 
 The GAL firmware fixes VIA's address at `$FDA0-$FDAF` range.
 
+### CPLD
+
+The CPLD firmware is also provided as a compiled JEDEC file [`CIA.jed`](burstcart-cpld/hdl/ciasdr-hdl/cia.jed).
+
+The source code is written in Verilog for XILINX ISE. All the project files are provided in [`ciasdr-hdl`](burstcart-cpld/hdl/ciasdr-hdl).
+
+The firmware fixes CPLD address at `$FD90-$FD9F` range.
+
+## Software
+
 ### EPROM
 
-The GAL chip does not have enough space to support 64K ROMs as C1/C2 cartridges, so only 32K is visible to the computer at any given time as C1.
+The GAL chip on the VIA version does not have enough space to support 64K ROMs as C1/C2 cartridges, so only 32K is visible to the computer at any given time as C1.
 
 You can use 32K chips; for the 64K version, the 32K banks can be selected using a switch connected to JP4.
+
+The CPLD version can address both C1 and C2 cartridges, so all 64K is available.
 
 The **[Parobek](https://github.com/ytmytm/plus4-parobek)** project provides a ROM that supports various fastloaders for BurstCart:
 
@@ -70,9 +90,11 @@ The **[Parobek](https://github.com/ytmytm/plus4-parobek)** project provides a RO
 - DOS wedge
 - embedded Directory Browser
 
-## PCB
+Be sure to choose correct ROM version - for VIA or CPLD.
 
-There are three jumpers on the PCB:
+## VIA PCB jumpers
+
+There are three jumpers on the VIA PCB:
 
 - JP1 determines how the `/IRQ` line is connected to the VIA. For W65C22S, it should go through a diode; for all other 6522 versions, it can be connected directly, and `D1` can be omitted.
 - JP2 chooses the clock for VIA - `phi0` or `phi2` (default)
@@ -89,7 +111,9 @@ This was not available on the 1541 due to a hardware bug in the 6522 chips.
 
 This project fixes the bug with a 74LS74 latch. Another 74LS126 chip is needed to buffer the input/output and provide the necessary open collector outputs on the external side for both the clock and data lines. The direction of the bus is controlled by port B bit 0 (PB0) pulled high to make it input as a default after reset.
 
-The single IEC port on the cartridge has only the hardware data and clock lines connected, as well as a common GND.
+The single IEC port on the VIA cartridge has only the hardware data and clock lines connected, as well as a common GND.
+
+The CPLD cartridge has dual daisy-chained IEC ports, so you can connect the computer's serial port to cartridge and continue from the second port to all other IEC devices.
 
 ### Parallel cable
 
