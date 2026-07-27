@@ -3,6 +3,7 @@
 This Plus/4 cartridge implements both fast serial burst for 1570/1571/1581 drives and a parallel connection for the 1541 drive, enabling high-speed data transfers.
 
 ![BurstCart VIA Version](media/01.via.top.png)
+![BurstCart CPLD Version](media/02.cpld.top.png)
 
 ## About
 
